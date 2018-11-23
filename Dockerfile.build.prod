@@ -1,0 +1,16 @@
+FROM mhart/alpine-node:8.12.0
+
+# add bash
+RUN apk add --update bash
+
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app
+
+# install app dependencies
+COPY package.json /usr/src/app/
+RUN yarn install
+
+# bundle app source
+COPY . /usr/src/app
+
+CMD ["yarn", "build"]

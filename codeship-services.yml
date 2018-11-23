@@ -1,0 +1,41 @@
+run-test:
+  build: .
+  dockerfile: Dockerfile.run.test
+  environment:
+  - ENV=test
+  - NODE_ENV=test
+  encrypted_env_file: .env.test.encrypted
+  volumes:
+  - ./scripts:/usr/src/app/scripts
+
+build-dev:
+  build: .
+  dockerfile: Dockerfile.build.dev
+  environment:
+  - ENV=production
+  - NODE_ENV=production
+  encrypted_env_file: .env.dev.encrypted
+  volumes:
+  - ./build:/usr/src/app/build
+
+deploy-dev:
+  image: codeship/aws-deployment
+  encrypted_env_file: .env.dev.encrypted
+  volumes:
+  - .:/deploy
+
+build-prod:
+  build: .
+  dockerfile: Dockerfile.build.prod
+  environment:
+  - ENV=production
+  - NODE_ENV=production
+  encrypted_env_file: .env.prod.encrypted
+  volumes:
+  - ./build:/usr/src/app/build
+
+deploy-prod:
+  image: codeship/aws-deployment
+  encrypted_env_file: .env.prod.encrypted
+  volumes:
+  - .:/deploy
