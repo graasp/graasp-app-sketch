@@ -3,6 +3,14 @@ FROM mhart/alpine-node:8.12.0
 # add bash
 RUN apk add --update bash
 
+# add phantomjs
+RUN apk add --update --no-cache fontconfig curl curl-dev && \
+  mkdir -p /usr/share && \
+  cd /usr/share \
+  && curl -L https://github.com/Overbryd/docker-phantomjs-alpine/releases/download/2.11/phantomjs-alpine-x86_64.tar.bz2 | tar xj \
+  && ln -s /usr/share/phantomjs/phantomjs /usr/bin/phantomjs \
+  && phantomjs --version
+
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 
