@@ -26,7 +26,8 @@
     "test": "react-scripts test --env=jsdom",
     "test:ci": "cross-env CI=true env-cmd ./.env.test react-scripts test --env=jsdom --coverage",
     "report": "cat ./coverage/lcov.info | env-cmd ./.env.test codacy-coverage",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "release": "standard-version"
   },
   "devDependencies": {
     "@commitlint/cli": "7.2.1",
