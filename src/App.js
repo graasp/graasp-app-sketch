@@ -1,12 +1,18 @@
 import React, { Component } from 'react';
 import { SketchField, Tools } from 'react-sketch';
+import download from 'downloadjs';
 import Header from './components/Header';
 import './App.css';
+
+// todo: remove once this is merged into a release
+// https://github.com/tbolis/react-sketch/pull/34
+const INITIAL_BACKGROUND_COLOR = 'transparent';
+const BACKGROUND_COLOR = '#fff';
 
 class App extends Component {
   state = {
     lineColor: 'black',
-    backgroundColor: 'transparent',
+    backgroundColor: INITIAL_BACKGROUND_COLOR,
     data: null,
     tool: Tools.Pencil,
   };
@@ -19,6 +25,11 @@ class App extends Component {
       } catch (err) {
         console.error(err);
       }
+    });
+    // todo: remove once this is merged into a release
+    // https://github.com/tbolis/react-sketch/pull/34
+    this.setState({
+      backgroundColor: BACKGROUND_COLOR,
     });
   }
 
@@ -37,7 +48,7 @@ class App extends Component {
     this.sketch.clear();
     this.sketch.setBackgroundFromDataUrl('');
     this.setState({
-      backgroundColor: 'transparent',
+      backgroundColor: BACKGROUND_COLOR,
     });
   };
 
@@ -47,6 +58,11 @@ class App extends Component {
     });
   };
 
+  save = () => {
+    const src = this.sketch.toDataURL();
+    download(src, 'sketch.png', 'image/png');
+  };
+
   render() {
     const {
       data,
@@ -54,12 +70,14 @@ class App extends Component {
       lineColor,
       backgroundColor,
     } = this.state;
+
     return (
       <div className="App">
         <Header
           clear={this.clear}
           changeColor={this.changeColor}
           color={lineColor}
+          save={this.save}
         />
         <SketchField
           ref={(sketch) => { this.sketch = sketch; }}
@@ -71,6 +89,7 @@ class App extends Component {
           lineWidth={3}
           onChange={() => this.postMessage(this.sketch.toJSON())}
           value={data}
+          imageFormat="png"
         />
       </div>
     );

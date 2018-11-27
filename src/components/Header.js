@@ -7,11 +7,14 @@ import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
 import ColorIcon from '@material-ui/icons/BorderColorRounded';
+import SaveIcon from '@material-ui/icons/SaveRounded';
 import { CirclePicker } from 'react-color';
 
 const styles = {
   root: {
     flex: 1,
+    // accommodate shadow from header
+    marginBottom: '5px',
   },
   left: {
     flex: 1,
@@ -42,6 +45,7 @@ class Header extends Component {
     classes: PropTypes.object.isRequired,
     changeColor: PropTypes.func.isRequired,
     clear: PropTypes.func.isRequired,
+    save: PropTypes.func.isRequired,
     color: PropTypes.string.isRequired,
   };
 
@@ -66,6 +70,11 @@ class Header extends Component {
 
   closeColorPicker = () => {
     this.setState({ displayColorPicker: false });
+  };
+
+  handleSave = () => {
+    const { save } = this.props;
+    save();
   };
 
   renderColorPicker = () => {
@@ -118,6 +127,9 @@ class Header extends Component {
               {
                 this.renderColorPicker()
               }
+              <IconButton onClick={this.handleSave}>
+                <SaveIcon />
+              </IconButton>
               <IconButton onClick={clear}>
                 <DeleteIcon />
               </IconButton>
