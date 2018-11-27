@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { SketchField, Tools } from 'react-sketch';
 import download from 'downloadjs';
+import { detect } from 'detect-browser';
 import Header from './components/Header';
 import './App.css';
 
@@ -58,9 +59,24 @@ class App extends Component {
     });
   };
 
+  openInNewTab = (src) => {
+    const image = new Image();
+    image.src = src;
+    const w = window.open('', '_blank');
+    w.document.write(image.outerHTML);
+  };
+
   save = () => {
     const src = this.sketch.toDataURL();
-    download(src, 'sketch.png', 'image/png');
+    const browser = detect();
+
+    // handle the case where we don't detect the browser
+    if (browser) {
+      if (browser.os === 'iOS' && browser.name === 'chrome') {
+        return this.openInNewTab(src);
+      }
+    }
+    return download(src, 'sketch.png', 'image/png');
   };
 
   render() {
