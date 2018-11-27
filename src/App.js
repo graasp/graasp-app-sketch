@@ -16,6 +16,7 @@ class App extends Component {
     backgroundColor: INITIAL_BACKGROUND_COLOR,
     data: null,
     tool: Tools.Pencil,
+    height: window.innerHeight,
   };
 
   componentDidMount() {
@@ -59,6 +60,14 @@ class App extends Component {
     });
   };
 
+  setHeight = (headerOuterHeight) => {
+    const { innerHeight } = window;
+    const height = innerHeight - headerOuterHeight;
+    this.setState({
+      height,
+    });
+  };
+
   openInNewTab = (src) => {
     const image = new Image();
     image.src = src;
@@ -89,6 +98,7 @@ class App extends Component {
       tool,
       lineColor,
       backgroundColor,
+      height,
     } = this.state;
 
     return (
@@ -96,13 +106,14 @@ class App extends Component {
         <Header
           clear={this.clear}
           changeColor={this.changeColor}
+          setHeight={this.setHeight}
           color={lineColor}
           save={this.save}
         />
         <SketchField
           ref={(sketch) => { this.sketch = sketch; }}
           width={window.innerWidth}
-          height={window.innerHeight}
+          height={height}
           backgroundColor={backgroundColor}
           tool={tool}
           lineColor={lineColor}

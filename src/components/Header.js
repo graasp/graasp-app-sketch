@@ -10,11 +10,13 @@ import ColorIcon from '@material-ui/icons/BorderColorRounded';
 import SaveIcon from '@material-ui/icons/SaveRounded';
 import { CirclePicker } from 'react-color';
 
+const MARGIN_BOTTOM = 5;
+
 const styles = {
   root: {
     flex: 1,
     // accommodate shadow from header
-    marginBottom: '5px',
+    marginBottom: `${MARGIN_BOTTOM}px`,
   },
   left: {
     flex: 1,
@@ -44,6 +46,7 @@ class Header extends Component {
     // eslint-disable-next-line react/forbid-prop-types
     classes: PropTypes.object.isRequired,
     changeColor: PropTypes.func.isRequired,
+    setHeight: PropTypes.func.isRequired,
     clear: PropTypes.func.isRequired,
     save: PropTypes.func.isRequired,
     color: PropTypes.string.isRequired,
@@ -52,6 +55,15 @@ class Header extends Component {
   state = {
     displayColorPicker: false,
   };
+
+  componentDidMount() {
+    if (this.wrapper) {
+      const height = this.wrapper.clientHeight;
+      const { setHeight } = this.props;
+      const outerHeight = height + MARGIN_BOTTOM;
+      setHeight(outerHeight);
+    }
+  }
 
   handleColorChange = (color) => {
     const { changeColor } = this.props;
@@ -114,7 +126,10 @@ class Header extends Component {
     } = this.props;
 
     return (
-      <div className={classes.root}>
+      <div
+        className={classes.root}
+        ref={(wrapper) => { this.wrapper = wrapper; }}
+      >
         <AppBar position="static" color="default">
           <Toolbar>
             <div className={classes.left}>
