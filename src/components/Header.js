@@ -89,12 +89,14 @@ class Header extends Component {
     if (displayColorPicker) {
       return [
         <CirclePicker
+          key="picker"
           onChangeComplete={this.handleColorChange}
           className={classes.popover}
         />,
         // eslint-disable-next-line max-len
         // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/interactive-supports-focus
         <div
+          key="curtain"
           role="button"
           className={classes.cover}
           onClick={this.closeColorPicker}
