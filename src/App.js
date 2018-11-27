@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { SketchField, Tools } from 'react-sketch';
 import download from 'downloadjs';
+import { detect } from 'detect-browser';
 import Header from './components/Header';
 import './App.css';
 
@@ -58,9 +59,28 @@ class App extends Component {
     });
   };
 
+  openInNewTab = (src) => {
+    const image = new Image();
+    image.src = src;
+    const w = window.open('', '_blank');
+    w.document.write(image.outerHTML);
+  };
+
   save = () => {
     const src = this.sketch.toDataURL();
-    download(src, 'sketch.png', 'image/png');
+    const browser = detect();
+
+    if (browser) {
+      // open as an image embedded in an html page in a
+      // new tab on all browsers when running on iOS
+      if (browser.os === 'iOS') {
+        return this.openInNewTab(src);
+      }
+      // when debugging for new browsers uncomment the following line
+      // and uncomment the corresponding html element in index.html
+      // document.querySelector('#browser').innerHTML = browser.name;
+    }
+    return download(src, 'sketch.png', 'image/png');
   };
 
   render() {
