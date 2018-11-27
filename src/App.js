@@ -70,13 +70,15 @@ class App extends Component {
     const src = this.sketch.toDataURL();
     const browser = detect();
 
-    // handle the case where we don't detect the browser
     if (browser) {
-      if (browser.os === 'iOS' && browser.name === 'crios') {
+      // open as an image embedded in an html page in a
+      // new tab on all browsers when running on iOS
+      if (browser.os === 'iOS') {
         return this.openInNewTab(src);
       }
-      // todo: remove
-      document.querySelector('#browser').innerHTML = browser.name;
+      // when debugging for new browsers uncomment the following line
+      // and uncomment the corresponding html element in index.html
+      // document.querySelector('#browser').innerHTML = browser.name;
     }
     return download(src, 'sketch.png', 'image/png');
   };
