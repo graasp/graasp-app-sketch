@@ -72,7 +72,7 @@ class App extends Component {
 
     // handle the case where we don't detect the browser
     if (browser) {
-      if (browser.os === 'iOS' && browser.name === 'chrome') {
+      if (browser.os === 'iOS' && browser.name === 'crios') {
         return this.openInNewTab(src);
       }
     }
