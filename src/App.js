@@ -75,6 +75,8 @@ class App extends Component {
       if (browser.os === 'iOS' && browser.name === 'crios') {
         return this.openInNewTab(src);
       }
+      // todo: remove
+      document.querySelector('#browser').innerHTML = browser.name;
     }
     return download(src, 'sketch.png', 'image/png');
   };
