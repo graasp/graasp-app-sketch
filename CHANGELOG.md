@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.1.2"></a>
+## [0.1.2](https://github.com/graasp/graasp-app-sketch/compare/v0.1.1...v0.1.2) (2018-11-27)
+
+
+### Bug Fixes
+
+* adapt canvas size to the size of the header ([4e3acd0](https://github.com/graasp/graasp-app-sketch/commit/4e3acd0)), closes [#9](https://github.com/graasp/graasp-app-sketch/issues/9)
+
+
+
 <a name="0.1.1"></a>
 ## [0.1.1](https://github.com/graasp/graasp-app-sketch/compare/v0.1.0...v0.1.1) (2018-11-27)
 
