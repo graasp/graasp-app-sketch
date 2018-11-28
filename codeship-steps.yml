@@ -20,7 +20,7 @@
       command: yarn build:dev
     - name: deploy-dev
       service: deploy-dev
-      command: /deploy/scripts/deploy.sh -b /deploy/build
+      command: /deploy/scripts/deploy.sh -b /deploy/dist
 
 # production: latest
 # ------------------
@@ -37,7 +37,7 @@
       command: yarn build:prod
     - name: deploy-prod-latest
       service: deploy-prod
-      command: /deploy/scripts/deploy.sh -b /deploy/build
+      command: /deploy/scripts/deploy.sh -b /deploy/dist
 
 # production: version
 # -------------------
@@ -55,4 +55,4 @@
       command: yarn build:version
     - name: deploy-prod-version
       service: deploy-prod
-      command: bash -c '/deploy/scripts/deploy.sh -b /deploy/build -v $CI_BRANCH'
+      command: bash -c '/deploy/scripts/deploy.sh -b /deploy/dist -v $CI_BRANCH'
