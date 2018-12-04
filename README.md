@@ -7,30 +7,30 @@
 ## Supported Browsers
 
 This app has been tested on the following browsers. The string used by `detect-browser` is
-specified in parentheses.
+specified in parentheses. A ✅ means that browser is supported, while a ❌ means it is not.
 
 ### macOS
 
-- Chrome (`chrome`)
-- Safari (`safari`)
-- Firefox (`firefox`)
-- Opera (`opera`)
+- Chrome (`chrome`) ✅
+- Safari (`safari`) ✅
+- Firefox (`firefox`) ✅
+- Opera (`opera`) ✅
 
 ### iOS
 
-- Safari (`ios`)
-- Chrome (`crios`)
-- Opera Touch (`ios-webview`)
-- Firefox (`fxios`)
-- Brave (`fxios`)
-- DuckDuckGo (`ios-webview`)
-- Edge (`ios`)
+- Safari (`ios`) ✅
+- Chrome (`crios`) ✅
+- Edge (`ios`) ❌
+- Firefox (`fxios`) ❌
+- Brave (`fxios`) ❌
+- Opera Touch (`ios-webview`) ❌
+- DuckDuckGo (`ios-webview`) ❌
 
 ### Android
 
-- Chrome (`chrome`)
-- Firefox (`firefox`)
-- Brave (`chrome`)
-- Edge (`chrome`)
-- Opera (`opera`)
-- DuckDuckGo (`chrome`)
+- Chrome (`chrome`) ✅
+- Firefox (`firefox`) ✅
+- Brave (`chrome`) ✅
+- Edge (`chrome`) ✅
+- Opera (`opera`) ✅
+- DuckDuckGo (`chrome`) ✅
