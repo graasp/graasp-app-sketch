@@ -5,10 +5,7 @@ import { detect } from 'detect-browser';
 import Header from './components/Header';
 import './App.css';
 
-// todo: remove once this is merged into a release
-// https://github.com/tbolis/react-sketch/pull/34
 const INITIAL_BACKGROUND_COLOR = 'transparent';
-const BACKGROUND_COLOR = '#fff';
 
 class App extends Component {
   state = {
@@ -28,11 +25,6 @@ class App extends Component {
         console.error(err);
       }
     });
-    // todo: remove once this is merged into a release
-    // https://github.com/tbolis/react-sketch/pull/34
-    this.setState({
-      backgroundColor: BACKGROUND_COLOR,
-    });
   }
 
   postMessage = (data) => {
@@ -50,7 +42,7 @@ class App extends Component {
     this.sketch.clear();
     this.sketch.setBackgroundFromDataUrl('');
     this.setState({
-      backgroundColor: BACKGROUND_COLOR,
+      backgroundColor: INITIAL_BACKGROUND_COLOR,
     });
   };
 
