@@ -1,6 +1,21 @@
-# Change Log
+# Changelog
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+### [0.1.5](https://github.com/graasp/graasp-app-sketch/compare/v0.1.4...v0.1.5) (2019-07-11)
+
+
+### Bug Fixes
+
+* set height to 600px when embedded ([0eb1725](https://github.com/graasp/graasp-app-sketch/commit/0eb1725)), closes [#16](https://github.com/graasp/graasp-app-sketch/issues/16)
+* use transparent background only ([4b75dfb](https://github.com/graasp/graasp-app-sketch/commit/4b75dfb)), closes [#15](https://github.com/graasp/graasp-app-sketch/issues/15)
+
+
+### Build System
+
+* update dependencies ([f7d0a92](https://github.com/graasp/graasp-app-sketch/commit/f7d0a92)), closes [#14](https://github.com/graasp/graasp-app-sketch/issues/14)
+
+
 
 <a name="0.1.4"></a>
 ## [0.1.4](https://github.com/graasp/graasp-app-sketch/compare/v0.1.3...v0.1.4) (2018-11-28)
